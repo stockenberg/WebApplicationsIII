@@ -20,3 +20,10 @@ use Illuminate\Http\Request;
 Route::get('products', function () {
     return \App\Product::all();
 });
+
+
+Route::delete('products/{id}', function ($id) {
+//    $product = \App\Product::find($id);
+//    $product->destroy();
+    return \App\Product::destroy($id);
+});

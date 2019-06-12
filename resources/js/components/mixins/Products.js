@@ -5,19 +5,29 @@ let products = {
         };
     },
     methods: {
-        loadProducts: function() {
+        load: function() {
             axios
                 .get(`${LARAVEL_API_URL}/products`)
                 .then(res => {
                     this.products = res.data;
                 })
-                .catch(err => {
-                    console.log(err);
-                });
+                .catch(this.log);
+        },
+        destroy: function(id) {
+            axios
+                .delete(`${LARAVEL_API_URL}/products/${id}`)
+                .then(res => {
+                    console.log(res);
+                    this.load();
+                })
+                .catch(this.log);
+        },
+        log: function(err) {
+            console.log(err);
         }
     },
     created: function() {
-        this.loadProducts();
+        this.load();
     }
 };
 

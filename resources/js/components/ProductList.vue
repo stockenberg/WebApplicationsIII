@@ -3,16 +3,28 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Name</th>
+        <th>Title</th>
         <th>Img</th>
         <th>Price</th>
         <th>Description</th>
+        <th>Manage</th>
       </tr>
     </thead>
     <tbody>
       <!-- Loop Area -->
-      <tr>
-        <td></td>
+      <!-- https://ponyfoo.com/articles/es6-destructuring-in-depth -->
+      <tr
+        v-for="({ id, title, img, price, description }, index) in products"
+        :key="index"
+      >
+        <td>{{ id }}</td>
+        <td>{{ title }}</td>
+        <td><img :src="img" alt="" /></td>
+        <td>{{ price }}</td>
+        <td>{{ description }}</td>
+        <td>
+          <button class="button is-danger" @click="destroy(id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -27,5 +39,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+table {
+  tr {
+    td {
+      img {
+        height: 50px;
+        width: auto;
+      }
+    }
+  }
+}
 </style>

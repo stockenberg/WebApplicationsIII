@@ -4,10 +4,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import { loadProgressBar } from "axios-progress-bar";
+import "axios-progress-bar/dist/nprogress.css";
+
 require("./bootstrap");
 require("./config");
 
 window.Vue = require("vue");
+
+loadProgressBar();
 
 /**
  * The following block of code may be used to automatically register your
