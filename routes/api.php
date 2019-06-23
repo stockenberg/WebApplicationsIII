@@ -43,7 +43,7 @@ Route::delete('products/{id}', function ($id) {
 });
 
 Route::post('addUserToChannel', 'ChannelController@store');
-Route::post('removeUserFromChannel', 'ChannelController@detach');
+Route::post('removeUserFromChannel', 'ChannelController@detach')->name('stuff');
 
 Route::post('products', function (Request $request) {
     $request->validate([
