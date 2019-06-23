@@ -26,6 +26,7 @@
     "dependencies": {
         "axios-progress-bar": "^1.2.0",
         "bulma": "^0.7.5",
-        "is-buffer": "^2.0.3"
+        "is-buffer": "^2.0.3",
+        "vue-izitoast": "^1.1.2"
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Http\Request;
 */
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
-    // return $request->user();
+// return $request->user();
 //});
 
 Route::get('products', function () {
@@ -22,8 +24,39 @@ Route::get('products', function () {
 });
 
 
+Route::get('channels-users', function() {
+    return \App\Channel::with('users')->get();
+});
+
+Route::get('channels', function() {
+    return \App\Channel::all();
+});
+
+Route::get('users', function() {
+    return \App\User::all();
+});
+
 Route::delete('products/{id}', function ($id) {
-//    $product = \App\Product::find($id);
-//    $product->destroy();
+    //    $product = \App\Product::find($id);
+    //    $product->destroy();
     return \App\Product::destroy($id);
+});
+
+Route::post('addUserToChannel', 'ChannelController@store');
+Route::post('removeUserFromChannel', 'ChannelController@detach');
+
+Route::post('products', function (Request $request) {
+    $request->validate([
+        'title' => 'required',
+        'image' => 'required',
+        'price' => 'required'
+    ]);
+
+    $product = new \App\Product();
+    $product->title = $request->title;
+    $product->img = $request->image;
+    $product->price = $request->price;
+    if ($product->save()) {
+        return response('Successfully saved', 200);
+    }
 });

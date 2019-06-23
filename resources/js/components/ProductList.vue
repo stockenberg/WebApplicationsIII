@@ -2,7 +2,7 @@
   <table class="table is-fullwidth">
     <thead>
       <tr>
-        <th>Id</th>
+        <th>Id {{ id }} {{ age }}</th>
         <th>Title</th>
         <th>Img</th>
         <th>Price</th>
@@ -13,6 +13,7 @@
     <tbody>
       <!-- Loop Area -->
       <!-- https://ponyfoo.com/articles/es6-destructuring-in-depth -->
+      <!-- TODO: Fix missing mixin detection -->
       <tr
         v-for="({ id, title, img, price, description }, index) in products"
         :key="index"
@@ -23,6 +24,7 @@
         <td>{{ price }}</td>
         <td>{{ description }}</td>
         <td>
+          <!-- TODO: Fix missing mixin detection -->
           <button class="button is-danger" @click="destroy(id)">Delete</button>
         </td>
       </tr>
@@ -35,7 +37,11 @@ import Products from "./mixins/Products";
 
 export default {
   name: "ProductList",
-  mixins: [Products]
+  mixins: [Products],
+  props: {
+    id: Number,
+    age: Number
+  }
 };
 </script>
 

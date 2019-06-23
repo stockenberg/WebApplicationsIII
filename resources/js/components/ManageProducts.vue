@@ -11,10 +11,7 @@ import AddProduct from "./AddProduct";
 
 export default {
   name: "ManageProducts",
-  components: { ProductList, AddProduct },
-  mounted() {
-    console.log(LARAVEL_API_URL);
-  }
+  components: { ProductList, AddProduct }
 };
 </script>
 

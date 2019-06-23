@@ -19,13 +19,17 @@ Route::get('/vue', function () {
     return view('vue');
 });
 
-Route::get('/products', function () {
-    return view('products');
-});
-
 Route::get('/json', function () {
     return ["ab", "cd", 1, 2, "banane"];
 });
 Auth::routes();
+
+
+// WIP
+Route::get('/products', function () {
+    return view('products');
+});
+
+Route::get('/channels', 'ChannelController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');

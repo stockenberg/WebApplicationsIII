@@ -15,7 +15,6 @@
       ></card>
     </div>
     <input type="text" v-model="id" />
-    <button @click="addProduct">Test</button>
   </div>
 </template>
 

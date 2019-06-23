@@ -5,7 +5,10 @@
  */
 
 import { loadProgressBar } from "axios-progress-bar";
+import VueIziToast from "vue-izitoast";
+
 import "axios-progress-bar/dist/nprogress.css";
+import "izitoast/dist/css/iziToast.min.css";
 
 require("./bootstrap");
 require("./config");
@@ -22,10 +25,13 @@ loadProgressBar();
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+Vue.use(VueIziToast);
+
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component("products", require("./components/pages/Products.vue").default);
+Vue.component("channels", require("./components/Channels.vue").default);
 Vue.component(
     "manage-products",
     require("./components/ManageProducts.vue").default
